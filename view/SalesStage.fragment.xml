@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	controllerName="opportunity.app.view.SalesStage" >
+	<SelectDialog
+		noDataText="No Data Found"
+		title="Select Sales Stage"
+		search=""
+		confirm="onSalesStageSelect"
+		close="handleClose"
+		items="{
+			path: '/SalesStages'
+		}" >
+		<StandardListItem
+			title="{SalesStageText}"
+			description="{SalesStageCode}"
+			iconDensityAware="false"
+			iconInset="false"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

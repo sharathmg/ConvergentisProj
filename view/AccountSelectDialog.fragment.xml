@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	controllerName="opportunity.app.view.AccountSelectDialog" >
+	<SelectDialog
+		noDataText="No Data Found"
+		title="Select Account"
+		search="handleAccSelSearch"
+		confirm="setAccount"
+		close="handleClose"
+		items="{
+			path: '/AccountCollections'
+		}" >
+		<StandardListItem
+			title="{AccountId}"
+			description="{AccountDesc}"
+			iconDensityAware="false"
+			iconInset="false"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

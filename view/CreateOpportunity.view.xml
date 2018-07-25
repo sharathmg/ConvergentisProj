@@ -1,0 +1,169 @@
+<core:View xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	 xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m" controllerName="opportunity.app.view.CreateOpportunity" 
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Opportunity" navButtonPress="onNavBack" showNavButton="true" >
+		<content>
+			<VBox class="sapUiSmallMargin">
+			<f:SimpleForm class="editableForm" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4"
+				columnsL="1" columnsM="1"  editable="true" 
+					layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024">
+					<f:content>
+						<Label text="Title"/>
+						<Text id="title" text="{vm>/data}"></Text>
+						<Label text="Name" required="true" />
+						<Input value="" maxLength="40" width="100%" placeholder="Add description(a maximum of 40 characters)"> </Input>
+						<Label text="Account" required="true"/>
+						<Input id="customer" value="" showValueHelp="true" valueHelpRequest="showAccountF4"></Input>
+						<Label text="Main Contact"/>
+						<Input value="" id="inputMainContact"
+						valueHelpRequest="showContactF4" showValueHelp="true"></Input>
+						<Label text="Employee Responsible"/>
+						<Input value="" showValueHelp="true" valueHelpRequest="showEmployeeF4"></Input>
+						<Label text="Expected Sales Volume"/>
+						<Input value=""></Input>
+						<Input id="currency" value="" placeholder="Currency" showValueHelp="true" valueHelpRequest="showCurrencyF4"></Input>
+					</f:content>
+				</f:SimpleForm>
+				<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="4" labelSpanM="4"
+					layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024" title=" ">
+					<f:content>
+						<Label text="Start Date"/>
+						<DatePicker placeholder="Enter Date ..."/>
+						<Label text="End Date" required="true"/>
+						<DatePicker placeholder="Enter Date ..."/>
+					</f:content>
+				</f:SimpleForm>
+				<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="4" labelSpanM="4"
+					layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024" title=" ">
+					<f:content>
+						<Label text="Status"/>
+						<Select id="statusdropdown" items="{json>/UserStatuses}"
+						class="pos_input">
+						<items>
+							<core:Item key="{json>UserStatusCode}" text="{json>UserStatusText}">
+							</core:Item>
+						</items>
+					</Select>
+					</f:content>
+				</f:SimpleForm>
+				<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="4" labelSpanM="4"
+					layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024" title=" ">
+					<f:content>
+						<Label text="Sales Stage"/>
+						<!--<Select id="stagedropdown" items="{json>/SalesStages}"
+						class="pos_input">
+						<items>
+							<core:Item key="{json>SalesStageCode}" text="{json>SalesStageDescription}">
+							</core:Item>
+						</items>
+					</Select>-->
+						<Input value="" showValueHelp="true" valueHelpRequest="showSalesStages"></Input>
+					</f:content>
+				</f:SimpleForm>
+				<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="4" labelSpanM="4"
+					layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024" title=" ">
+					<f:content>
+						<Label text="Chance of Success(%)"/>
+						<Input value="80"></Input>
+					</f:content>
+				</f:SimpleForm>
+				<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="4" labelSpanM="4"
+					layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024" title=" ">
+					<f:content>
+						<Label text="Priority"/>
+							<Select id="priority_val" items="{json>/Priorities}" class="pos_input">
+						<items>
+							<core:Item key="{json>PriorityCode}" text="{json>PriorityText}">
+							</core:Item>
+						</items>
+					</Select>
+					</f:content>
+				</f:SimpleForm>
+				<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="4" labelSpanM="4"
+					layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024" title="Sales Area">
+					<f:content>
+						<Label text="Sales Organization"/>
+						<Input value="Convergent IS CA (CCA1)"/>
+						<Label text="Distribution Channel"/>
+						<Text text="CiS Sales (10)"></Text>
+						<Label text="Division"/>
+						<Text text="Common Division (00)"></Text>
+					</f:content>
+				</f:SimpleForm>
+				<!--<Table inset="false" noDataText="Empty Product List">-->
+				<!--	<headerToolbar>-->
+				<!--		<Toolbar>-->
+				<!--			<Title level="H2" text="Products"></Title>-->
+				<!--			<ToolbarSpacer/>-->
+				<!--			<Button icon="sap-icon://add" press="handleAddProductPress"/>-->
+				<!--		</Toolbar>-->
+				<!--	</headerToolbar>-->
+				<!--	<columns>-->
+				<!--		<Column width="12em">-->
+				<!--			<Text text="Product"/>-->
+				<!--		</Column>-->
+				<!--		<Column demandPopin="true" minScreenWidth="Tablet">-->
+				<!--			<Text text="Quantity"/>-->
+				<!--		</Column>-->
+				<!--		<Column demandPopin="true" hAlign="Right" minScreenWidth="Tablet">-->
+				<!--			<Text text="Net Value"/>-->
+				<!--		</Column>-->
+				<!--		<Column demandPopin="true" hAlign="Right" minScreenWidth="Tablet">-->
+				<!--			<Text text="Exp. Total Value"/>-->
+				<!--		</Column>-->
+				<!--	</columns>-->
+				<!--	<items>-->
+				<!--		<ColumnListItem>-->
+				<!--			<cells>-->
+				<!--				<ObjectIdentifier text="{ProductId}" title="{Name}"/>-->
+				<!--				<Text text="{SupplierName}"/>-->
+				<!--				<Text text="{Width}"/>-->
+				<!--				<ObjectNumber number="{WeightMeasure}" state="{ path: 'WeightMeasure', formatter: 'sap.m.sample.Table.Formatter.weightState' }"-->
+				<!--					unit="{WeightUnit}"/>-->
+				<!--			</cells>-->
+				<!--		</ColumnListItem>-->
+				<!--	</items>-->
+				<!--</Table>-->
+				<Table inset="false" noDataText="Empty Partner List">
+					<headerToolbar>
+						<Toolbar>
+								<Title level="H2" text="Partners"></Title>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://add" press="handleAddProductPress"/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column width="12em">
+							<Text text="Partner Function"/>
+						</Column>
+						<Column demandPopin="true"  minScreenWidth="Tablet">
+							<Text text="Partner"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<Text text="Sold To Party"/>
+								<Text text="Canadian Blood Services"/>
+							</cells>
+						</ColumnListItem>
+						<ColumnListItem>
+							<cells>
+								<Text text="Ship To Party"/>
+								<Text text="Canadian Blood Services"/>
+							</cells>
+						</ColumnListItem>
+						<ColumnListItem>
+							<cells>
+								<Text text="Delivery Team"/>
+								<Text text="Nidhideep Bhandari"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</VBox>
+		</content>
+	</Page>
+</core:View>

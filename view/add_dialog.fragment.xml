@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		noDataText="No Data Found"
+		title="Select Transaction Type"
+		search="handleTrTypeSearch"
+		confirm="onTypeSelect"
+		close="handleClose"
+		items="{
+			path: '/ProcessTypes'
+		}" >
+		<StandardListItem
+			title="{ProcessTypeCode}"
+			description="{Description}"
+			iconDensityAware="false"
+			iconInset="false"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

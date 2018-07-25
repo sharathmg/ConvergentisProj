@@ -1,0 +1,153 @@
+<mvc:View controllerName="opportunity.app.view.Detail" xmlns:layout="sap.ui.layout" xmlns:ca="sap.ca.ui" xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:ui="sap.ui.layout" xmlns="sap.m">
+	<Page id="detailPage" navButtonPress="onNavBack" showNavButton="{device]/isPhone}" title="Opportunity">
+		<content>
+			<ObjectHeader iconActive="true" icon="sap-icon://person-placeholder" id="detailHeader" introActive="false" number="{WeightedRev}" numberUnit="Exp. Sales Volume in {CurrencyCode}"
+				title="{Description}" titleActive="false">
+				<attributes id="detailAttributes">
+					<ObjectAttribute active="false" id="attribute1" text="{ProcessTypeDescriptionLong}"></ObjectAttribute>
+					<ObjectAttribute active="false" id="attribute2" text="{MainContactName}"></ObjectAttribute>
+					<ObjectAttribute active="false" id="attribute3" text="{EmployeeResponsibleName}"></ObjectAttribute>
+				</attributes>
+				<firstStatus id="detailStatus">
+					<ObjectStatus id="status1" text=""></ObjectStatus>
+				</firstStatus>
+			</ObjectHeader>
+			<IconTabBar expanded="{device]/isNoPhone}" id="idIconTabBar" select="selectedTab">
+				<items id="detailsItems">
+					<IconTabFilter icon="sap-icon://hint" id="info" key="selfInfo" text="Info">
+						<content>
+							<f:SimpleForm columnsL="1" editable="false" emptySpanL="4" emptySpanM="4" id="iconTabFilter1form" labelSpanL="3" labelSpanM="3"
+								layout="ResponsiveGridLayout" minWidth="1024">
+								<f:content>
+									<Label text="Type"/>
+									<Text text="{ProcessTypeDescription}"/>
+									<Label text="Opportunity ID"/>
+									<Text text="{ID}"/>
+									<Label text="Start Date"/>
+									<Text text="{path:'StartDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd-MMM-yyyy' } }"/>
+									<Label text="End Date"/>
+									<Text text="{path:'CloseDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd-MMM-yyyy' } }"/>
+									<Label text="Sales Stage"/>
+									<Text text="{SalesStageText}"/>
+									<Label text="Chance of Success"/>
+									<Text text="{ChanceOfSuccess}%"/>
+									<Label text="Priority"/>
+									<Text text="{PriorityText}"/>
+									<Label text="Exp. Sales Volume"/>
+									<Text text="{WeightedRev}"/>
+									<Label text="Exp. Total Value"/>
+									<Text text="{TotalRev}"/>
+									<core:ExtensionPoint name="extIconTabFilterForm1"/>
+								</f:content>
+							</f:SimpleForm>
+						</content>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://cart" iconColor="Neutral" id="tab_product" key="Products" text="Products">
+						<content>
+							<core:ExtensionPoint name="opportunityProductTabContentExtension"></core:ExtensionPoint>
+							<Label text="{i18n>PRODUCT_BASKET}"></Label>
+							<Table id="Product_Tab" items="{json>/Products}" noDataText="{i18n>NOPRODUCTS}">
+								<columns>
+									<core:ExtensionPoint name="opportunityProductTabColoumExtension"></core:ExtensionPoint>
+									<Column id="product_column" width="40%">
+										<header>
+											<Label id="productColumnLabel_S3" text="ID"></Label>
+										</header>
+									</Column>
+									<Column hAlign="Right" id="quanity_column">
+										<header>
+											<Label id="productQuantity_S3" text="Product"></Label>
+										</header>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem id="productBasketTemplate_S3" type="Navigation">
+										<cells>
+											<Text text="{json>Id}" width='15em'></Text>
+											<Text text="{json>LongText}"></Text>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</content>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://notes" id="tab_notes" key="Notes" text="Notes">
+						<content>
+							<ca:Notes addNote="_handleAddNote" id="notesList" inset="false" items="{json>/Notes}" noDataText="{i18n]NONOTES}" showNoteComposer="true"
+								textMaxLength="1000" threshold="4">
+								<ca:ExpansibleFeedListItem maxLines="3" sender="{json>Creater}" text="{json>Content}"
+									timestamp="{path:'json>CreatedAt', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd-MMM-yyyy' }}"></ca:ExpansibleFeedListItem>
+							</ca:Notes>
+						</content>
+					</IconTabFilter>
+						<IconTabFilter id="tab_attachment" icon="sap-icon://attachment"
+						key="Attachments" text="Attachments" iconColor="Neutral">
+						<content>
+							<ca:FileUpload id="fileupload" items="/OpportunityAttachments"
+								url="url" size="size" fileName="name" uploadedDate="uploadedDate"
+								contributor="contributor" fileId="fileId" acceptRequestHeader="application/json"
+								useMultipart="false" deleteFile="onDeleteFile" renameEnabled="true"
+								uploadUrl="/sap/opu/odata/sap/ZOPPORTUNITY_SRV/OpportunityAttachments"
+								useEditControls="true" fileExtension="fileExtension"
+								uploadEnabled="true" uploadFile="onUploadFile" renameFile="onRenameFile" saveClicked="onSaveClicked" 
+								fileUploadFailed="onFileUploadFailed"
+								></ca:FileUpload>
+						</content>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://group" iconColor="Neutral" id="salesTeam" key="SalesTeam" text="Sales Team">
+						<content>
+							<core:ExtensionPoint name="opportunitysalesTabContentExtension"></core:ExtensionPoint>
+							<Table id="Sales_Team" items="{json>/SalesTeams}" noDataText="{i18n]NOPARTIES}" text="{i18n]TEAM}">
+								<columns>
+									<core:ExtensionPoint name="opportunitysalesTabColumnExtension"></core:ExtensionPoint>
+									<Column id="salesTeamColumn1" width="15%"/>
+									<Column id="salesTeamColumn2" width="75%"/>
+									<Column id="salesTeamColumn3" width="10%"/>
+								</columns>
+								<items>
+									<ColumnListItem id="salesTeamTemplate" items="{json>/SalesTeams}">
+										<cells>
+											<core:ExtensionPoint name="opportunitySalesTabCellsExtension"></core:ExtensionPoint>
+											<ObjectHeader icon="{json>ImgSrc}" id="image"></ObjectHeader>
+											<layout:VerticalLayout class="ImagePadding" id="layout">
+												<layout:content>
+													<Link id="salesPartnerName" items="{json>/SalesTeams}"
+														text="{json>PartnerName}">
+														<customData>
+															<core:CustomData key="PartnerNumber" value="{json>PartnerNumber}"/>
+															<core:CustomData key="PartnerFunctionCode" value="{json>PartnerFunctionCode}"/>
+															<core:CustomData key="MainPartner" value="{json>MainPartner}"/>
+														</customData>
+													</Link>
+													<layout:HorizontalLayout id="hLayout">
+														<Label design="Bold" id="salespartnerFunction_Label" text="{i18n]PARTNER_FUNCTION}"></Label>
+														<Text id="salespartnerFunction_Text" text="{json>PartnerFunctionText}"></Text>
+													</layout:HorizontalLayout>
+												    <ObjectStatus icon="sap-icon://outgoing-call" id="salespartnerMobile_Text" text="{json>TelePhoneNumber}"></ObjectStatus>
+												 	<ObjectStatus icon="sap-icon://outgoing-call" id="salespartnerMobile_Text1" text="{json>MobileNumber}"></ObjectStatus>
+												</layout:content>
+											</layout:VerticalLayout>
+											<Button icon="sap-icon://decline" id="participantDeleteButton" press="onDeleteParticipant" type="Transparent"
+												visible="{path : 'json>PartnerFunctionCode',formatter : 'opportunity.app.util.Formatter.formatParticipant'}"></Button>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</content>
+					</IconTabFilter>
+					<core:ExtensionPoint name="extIconTabFilter"/>
+				</items>
+			</IconTabBar>
+			<core:ExtensionPoint name="extDetail"/>
+		</content>
+		<footer id="detailFooter">
+			<Toolbar id="detailToolbar">
+				<content>
+					<ToolbarSpacer id="toolbarSpacer"></ToolbarSpacer>
+					<Button icon="sap-icon://action" id="actionButton" press="openActionSheet"></Button>
+				</content>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

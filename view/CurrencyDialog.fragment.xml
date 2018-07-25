@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	controllerName="opportunity.app.view.CurrencyDialog" >
+	<SelectDialog
+		noDataText="No Data Found"
+		title="Select Currency"
+		search="searchCurrency"
+		confirm="setCurrency"
+		close="handleClose"
+		items="{
+			path: '/Currencies'
+		}" >
+		<StandardListItem
+			title="{CurrencyText}"
+			description="{CurrencyCode}"
+			iconDensityAware="false"
+			iconInset="false"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

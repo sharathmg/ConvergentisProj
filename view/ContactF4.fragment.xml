@@ -1,0 +1,49 @@
+<core:View xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m" controllerName="view.ContactF4" 
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Dialog id="dialogContactF4" xmlns="sap.m" title="{i18n>CONTACT_TITLE}"
+	contentWidth="480px" contentHeight="720px" class="DialogPadding">
+	<subHeader>
+		<Bar>
+			<contentLeft>
+				<SearchField placeholder="{i18n>SEARCH_CONTACTS}"
+					search="searchContact"></SearchField>
+			</contentLeft>
+		</Bar>
+
+	</subHeader>
+	<content>
+		<List id="contactList" noDataText="{i18n>NO_CONTACTS}" mode="SingleSelectMaster"
+			items="{json>/ContactCollection}" selectionChange="setContact"
+			growing="true">
+			<items>
+				<ObjectListItem
+					title="{parts: [{path:'i18n>LBL_FULLNAME_CONTACT_ID'}, {path:'json>fullName'} ,{path:'json>contactID'}], formatter:'jQuery.sap.formatMessage'}">
+					<attributes>
+						<ObjectAttribute text="{json>company}">
+						</ObjectAttribute>
+						<ObjectAttribute text="{json>function}">
+						</ObjectAttribute>
+					</attributes>
+				</ObjectListItem>
+			</items>
+			<infoToolbar>
+				<Toolbar id="contactF4Toolbar" active="false">
+					<content>
+						<Label id="filterByLabel" text=""></Label>
+						<ToolbarSpacer></ToolbarSpacer>
+						<Button id="XButton" type="Transparent" icon="sap-icon://sys-cancel-2"
+							press="closeToolbar"></Button> 
+
+					</content>
+				</Toolbar>
+			</infoToolbar>
+		</List>
+	</content>
+	<beginButton>
+		<Button text="{i18n>CANCEL}" press="closeContactF4">
+		</Button>
+	</beginButton>
+</Dialog>
+</core:View>

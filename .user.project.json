@@ -1,0 +1,64 @@
+{
+  "run": [
+    {
+      "filePath": "/zopp_App/index.html",
+      "previewMode": 0,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 582862,
+        "displayName": "New Web Application 36"
+      }
+    },
+    {
+      "filePath": "/zopp_App/Component.js",
+      "previewMode": 0,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "_metadata": {
+        "runnerId": "fiorirunner",
+        "id": 8371371,
+        "displayName": "New SAP Fiori Component on Sandbox 8"
+      }
+    },
+    {
+      "filePath": "/zopp_App/index.html",
+      "previewMode": 0,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 8824794,
+        "displayName": "New Web Application 34"
+      }
+    },
+    {
+      "filePath": "/zopp_App/localIndex.html",
+      "previewMode": 0,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 3148509,
+        "displayName": "New Web Application 35"
+      }
+    }
+  ]
+}
