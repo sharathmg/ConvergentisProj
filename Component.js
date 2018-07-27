@@ -15,6 +15,7 @@ sap.ui.core.UIComponent.extend("opportunity.app.Component", {
 
 		config : {
 			resourceBundle : "i18n/messageBundle.properties",
+			// Changed from messageBundle to i18n
 			serviceConfig : {
 				name: "ZOPPORTUNITY_SRV",
 				serviceUrl: "/sap/opu/odata/sap/ZOPPORTUNITY_SRV/"
@@ -23,7 +24,9 @@ sap.ui.core.UIComponent.extend("opportunity.app.Component", {
 
 		routing : {
 			config : {
-				routerClass : opportunity.app.MyRouter,
+				routerClass : "opportunity.app.MyRouter",
+				// Syntax check Issue - Sharath
+				// routerClass: "opportunity.app.MyRouter"
 				viewType : "XML",
 				viewPath : "opportunity.app.view",
 				targetAggregation : "detailPages",

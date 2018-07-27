@@ -25,7 +25,7 @@ sap.ui.define([
 			if (sap.ui.Device.system.phone) {
 				return;
 			}
-
+			//debugger;
 			this.getRouter().attachRoutePatternMatched(this.onRouteMatched, this);
 
 			oEventBus.subscribe("Detail", "Changed", this.onDetailChanged, this);
@@ -147,7 +147,7 @@ sap.ui.define([
 				this._oDialog.setModel(this.getView().getModel());
 			}
 
-			// TODO:  // Multi-select if required
+			// Multi-select if required
 			var bMultiSelect = !!oEvent.getSource().data("multi");
 			this._oDialog.setMultiSelect(bMultiSelect);
 
@@ -178,7 +178,10 @@ sap.ui.define([
 
 		showDetail: function(oItem) {
 			// If we're on a phone device, include nav in history
-			var bReplace = jQuery.device.is.phone ? false : true;
+			var bReplace = sap.ui.device.system.phone ? false : true;
+			// Replace the deprecated API - Sharath
+			//var xReplace = sap.ui.Device.system.phone ? false : true;
+			
 			this.getRouter().navTo("detail", {
 				from: "master",
 				entity: oItem.getBindingContext().getPath().substr(1),

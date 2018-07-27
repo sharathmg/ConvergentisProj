@@ -1,6 +1,6 @@
 jQuery.sap.require("opportunity.app.util.Formatter");
-jQuery.sap.require("sap.ca.ui.model.type.FileSize");
-jQuery.sap.require("sap.ca.scfld.md.controller.BaseDetailController");
+sap.ui.require("sap.ca.ui.model.type.FileSize");
+sap.ui.require("sap.ca.scfld.md.controller.BaseDetailController");
 sap.ui.core.mvc.Controller.extend("opportunity.app.view.Detail", {
 
 	onInit: function() {

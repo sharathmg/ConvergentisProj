@@ -26,7 +26,7 @@
         <content>
             <List 
                 id="list" 
-                select="onSelect" 
+                selectionChange="onSelect" 
                 mode="{device>/listMode}" 
                 noDataText="{i18n>masterListNoDataText}" 
                 growing="true" 

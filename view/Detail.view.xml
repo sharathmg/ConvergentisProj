@@ -9,9 +9,9 @@
 					<ObjectAttribute active="false" id="attribute2" text="{MainContactName}"></ObjectAttribute>
 					<ObjectAttribute active="false" id="attribute3" text="{EmployeeResponsibleName}"></ObjectAttribute>
 				</attributes>
-				<firstStatus id="detailStatus">
+				<statuses id="detailStatus">
 					<ObjectStatus id="status1" text=""></ObjectStatus>
-				</firstStatus>
+				</statuses>
 			</ObjectHeader>
 			<IconTabBar expanded="{device]/isNoPhone}" id="idIconTabBar" select="selectedTab">
 				<items id="detailsItems">
@@ -106,7 +106,7 @@
 									<Column id="salesTeamColumn3" width="10%"/>
 								</columns>
 								<items>
-									<ColumnListItem id="salesTeamTemplate" items="{json>/SalesTeams}">
+									<ListItem id="salesTeamTemplate" items="{json>/SalesTeams}">
 										<cells>
 											<core:ExtensionPoint name="opportunitySalesTabCellsExtension"></core:ExtensionPoint>
 											<ObjectHeader icon="{json>ImgSrc}" id="image"></ObjectHeader>
@@ -131,7 +131,7 @@
 											<Button icon="sap-icon://decline" id="participantDeleteButton" press="onDeleteParticipant" type="Transparent"
 												visible="{path : 'json>PartnerFunctionCode',formatter : 'opportunity.app.util.Formatter.formatParticipant'}"></Button>
 										</cells>
-									</ColumnListItem>
+									</ListItem>
 								</items>
 							</Table>
 						</content>
